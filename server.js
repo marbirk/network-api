@@ -77,9 +77,9 @@ const _db = {
     {
       id: 11,
       name: "Simon Schmalfeld",
-      web: "https://www.linkedin.com/in/simonschmalfeld/",
+      web: "https://www.riija.graphics/",
       active: true,
-      tags: ["web design", "frontend"],
+      tags: ["interactive design", "apps"],
     },
     {
       id: 12,
