@@ -81,16 +81,26 @@ const _db = {
       active: true,
       tags: ["web design", "frontend"],
     },
+    {
+      id: 12,
+      name: "Jennifer Nadolski",
+      web: "https://www.jnadolski.com/",
+      active: false,
+      tags: ["editor", "journalism"],
+    },
+    {
+      id: 13,
+      name: "Andrea Kahl",
+      web: "https://www.andreakahl.de/",
+      active: true,
+      tags: ["health"],
+    },
   ],
 };
 
 const contactHandler = {
   getContact(id) {
-    for (let i = 0; i < _db.contacts.length; i++) {
-      if (_db.contacts[i].id === id) {
-        return _db.contacts[i];
-      }
-    }
+    return _db.contacts.find((contact) => contact.id === id);
   },
   getAllContacts() {
     return _db.contacts;
@@ -133,7 +143,7 @@ app.use(
   graphqlHTTP({
     schema: schema,
     rootValue: rootResolver,
-    graphiql: true,
+    graphiql: process.env.NODE_ENV === "development",
   })
 );
 
