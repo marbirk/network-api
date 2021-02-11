@@ -105,24 +105,31 @@ const contactHandler = {
   getAllContacts() {
     return _db.contacts;
   },
+  getAllActiveContacts() {
+    return _db.contacts.filter((contact) => contact.active);
+  },
 };
 
 const schema = graphql.buildSchema(`
     type Contact {
-      name: String!
-      web: String!
-      active: Boolean!
-      tags: [String]!
+      name: String
+      web: String
+      active: Boolean
+      tags: [String]
     }
     type Query {
       contact(id: Int!): Contact
       allContacts: [Contact]
+      allActiveContacts: [Contact]
     }
   `);
 
 const rootResolver = {
   allContacts: () => {
     return contactHandler.getAllContacts();
+  },
+  allActiveContacts: () => {
+    return contactHandler.getAllActiveContacts();
   },
   contact: (args) => {
     const contact_id = args.id;
