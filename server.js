@@ -114,7 +114,6 @@ const schema = graphql.buildSchema(`
     type Contact {
       name: String
       web: String
-      active: Boolean
       tags: [String]
     }
     type Query {
@@ -137,7 +136,6 @@ const rootResolver = {
     return {
       name: contact.name,
       web: contact.web,
-      active: contact.active,
       tags: contact.tags,
     };
   },
